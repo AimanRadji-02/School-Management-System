@@ -452,4 +452,86 @@ class Bus {
     }
 }
 
+//aiman
+class Classroom {
+    String className;
+    int studentCount;
+    ClassEquipment equipment;
+
+    public Classroom(String className, int studentCount, ClassEquipment equipment) {
+        this.className = className;
+        this.studentCount = studentCount;
+        this.equipment = equipment;
+    }
+
+    public void classDetails() {
+        System.out.println("Class: " + className + " | Students: " + studentCount);
+        equipment.equipmentDetails();
+    }
+}
+//aiman
+class Lab {
+    String labName;
+    List<LabEquipment> labEquipments = new ArrayList<>();
+    String inchargeId;
+    boolean occupied;
+
+    public Lab(String labName) {
+        this.labName = labName;
+        this.occupied = false;
+    }
+
+    public void labDetails() {
+        System.out.println("Lab: " + labName + " | Incharge: " + inchargeId);
+        for (LabEquipment l : labEquipments) l.equipmentDetails();
+    }
+
+    public void isOccupied() {
+        System.out.println("Lab " + labName + " is " + (occupied ? "occupied" : "free"));
+    }
+
+    public void payFine(Student s) {
+        System.out.println("Student " + s.name + " paid fine for damaged equipment.");
+    }
+}
+
+//-----------------------------------//
+//              MAIN                 //
+//-----------------------------------//
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("School Name: ");
+        String name = sc.nextLine();
+        System.out.print("Address: ");
+        String address = sc.nextLine();
+        System.out.print("Contact Number: ");
+        String contact = sc.nextLine();
+        System.out.print("Medium of Study: ");
+        String medium = sc.nextLine();
+
+        SchoolManagement sm = new SchoolManagement(name, address, contact, medium);
+
+        System.out.print("Auditorium - Number of Seats: ");
+        int seats = sc.nextInt(); sc.nextLine();
+        Auditorium auditorium = new Auditorium(seats);
+
+        System.out.print("Playground - Area/Size: ");
+        String area = sc.nextLine();
+        Playground playground = new Playground(area);
+
+        System.out.print("Notice Board Incharge Name: ");
+        String incharge = sc.nextLine();
+        NoticeBoard noticeBoard = new NoticeBoard(incharge);
+
+        // Minimal initialization for demo
+        sm.initialize(auditorium, playground, noticeBoard, new ArrayList<>(), new ArrayList<>(), new ArrayList<>());
+
+        sm.isOpen();
+        sm.runSchool();
+    }
+}
+
+
 
