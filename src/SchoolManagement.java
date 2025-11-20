@@ -184,3 +184,69 @@ class SchoolManagement {
         }
     }
 }
+class Auditorium {
+    int totalSeats, seatsOccupied;
+    String eventName, eventDate, eventTime;
+
+    public Auditorium(int totalSeats) {
+        this.totalSeats = totalSeats;
+        this.seatsOccupied = 0;
+    }
+
+    public void bookAuditorium(Scanner sc) {
+        System.out.print("Event Name: ");
+        eventName = sc.nextLine();
+        System.out.print("Event Date: ");
+        eventDate = sc.nextLine();
+        System.out.print("Event Time: ");
+        eventTime = sc.nextLine();
+        System.out.print("Number of participants: ");
+        seatsOccupied = sc.nextInt(); sc.nextLine();
+        System.out.println("Auditorium booked for " + eventName);
+    }
+
+    public void eventDetails() {
+        if (eventName == null) System.out.println("No event booked yet.");
+        else System.out.println("Event: " + eventName + " on " + eventDate + " at " + eventTime);
+    }
+
+    public void displaySeats() {
+        System.out.println("Total Seats: " + totalSeats + " | Occupied: " + seatsOccupied +
+                           " | Available: " + (totalSeats - seatsOccupied));
+    }
+}
+//Abdurrahman 
+class Playground {
+    String area;
+    boolean occupied;
+
+    public Playground(String area) {
+        this.area = area;
+        this.occupied = false;
+    }
+
+    public void isOccupied() {
+        System.out.println("Playground is " + (occupied ? "occupied" : "free") + " in area: " + area);
+    }
+}
+//Abdurrahman 
+class NoticeBoard {
+    List<String> newsList = new ArrayList<>();
+    String inchargeName;
+
+    public NoticeBoard(String inchargeName) {
+        this.inchargeName = inchargeName;
+    }
+
+    public void display() {
+        System.out.println("\n--- Notice Board (" + inchargeName + ") ---");
+        if (newsList.isEmpty()) System.out.println("No news available.");
+        else for (String n : newsList) System.out.println("- " + n);
+    }
+
+    public void addContent(String content) {
+        newsList.add(content);
+        System.out.println("Notice added successfully.");
+    }
+}
+
