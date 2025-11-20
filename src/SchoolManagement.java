@@ -335,5 +335,121 @@ class Department {
         for (Employee e : members) System.out.println(" - " + e.name);
     }
 }
+//Abdurrahman 
+// Abstract Employee
+abstract class Employee {
+    String employeeId, name, departmentId;
+    double salary;
+
+    public Employee(String employeeId, String name, double salary, String departmentId) {
+        this.employeeId = employeeId;
+        this.name = name;
+        this.salary = salary;
+        this.departmentId = departmentId;
+    }
+
+    abstract void employeeDetails();
+    abstract void checkIn();
+    abstract void receiveSalary();
+}
+//Abdurrahman 
+class Teacher extends Employee {
+    public Teacher(String employeeId, String name, double salary, String departmentId) {
+        super(employeeId, name, salary, departmentId);
+    }
+
+    @Override
+    void employeeDetails() {
+        System.out.println("Teacher: " + name + " | Dept: " + departmentId + " | Salary: " + salary);
+    }
+
+    @Override
+    void checkIn() { System.out.println("Teacher " + name + " checked in."); }
+
+    @Override
+    void receiveSalary() { System.out.println("Teacher " + name + " received salary " + salary); }
+}
+//Abdurrahman 
+class SupportStaff extends Employee {
+    public SupportStaff(String employeeId, String name, double salary, String departmentId) {
+        super(employeeId, name, salary, departmentId);
+    }
+
+    @Override
+    void employeeDetails() {
+        System.out.println("Support Staff: " + name + " | Dept: " + departmentId + " | Salary: " + salary);
+    }
+
+    @Override
+    void checkIn() { System.out.println("Support Staff " + name + " checked in."); }
+
+    @Override
+    void receiveSalary() { System.out.println("Support Staff " + name + " received salary " + salary); }
+}
+//Abdurrahman 
+// Abstract Student
+abstract class Student {
+    String studentId, name, classId, section, busId;
+
+    public Student(String studentId, String name, String classId, String section, String busId) {
+        this.studentId = studentId;
+        this.name = name;
+        this.classId = classId;
+        this.section = section;
+        this.busId = busId;
+    }
+
+    abstract void studentDetails();
+    abstract void payFees();
+}
+//Abdurrahman 
+class PrimaryStudent extends Student {
+    public PrimaryStudent(String studentId, String name, String classId, String section, String busId) {
+        super(studentId, name, classId, section, busId);
+    }
+
+    @Override
+    void studentDetails() {
+        System.out.println("Primary Student: " + name + " | Class: " + classId + " | Section: " + section);
+    }
+
+    @Override
+    void payFees() { System.out.println(name + " paid primary student fee."); }
+}
+//Abdurrahman 
+class HigherSecondaryStudent extends Student {
+    public HigherSecondaryStudent(String studentId, String name, String classId, String section, String busId) {
+        super(studentId, name, classId, section, busId);
+    }
+
+    @Override
+    void studentDetails() {
+        System.out.println("Higher Secondary Student: " + name + " | Class: " + classId + " | Section: " + section);
+    }
+
+    @Override
+    void payFees() { System.out.println(name + " paid higher secondary student fee."); }
+}
+//Abdurrahman 
+class Bus {
+    String busId, driverId, busNumber;
+    List<String> areaList = new ArrayList<>();
+    int capacity;
+
+    public Bus(String busId, String driverId, String busNumber, int capacity) {
+        this.busId = busId;
+        this.driverId = driverId;
+        this.busNumber = busNumber;
+        this.capacity = capacity;
+    }
+
+    public void busDetails() {
+        System.out.println("Bus ID: " + busId + " | Bus No: " + busNumber + " | Capacity: " + capacity);
+    }
+
+    public void showSeats() {
+        System.out.println("Bus " + busNumber + " has " + capacity + " seats.");
+    }
+}
 
 
