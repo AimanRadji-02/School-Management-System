@@ -250,3 +250,90 @@ class NoticeBoard {
     }
 }
 
+//aiman
+// Abstract Equipment class
+abstract class Equipment {
+    String equipmentId;
+    double cost;
+
+    public Equipment(String equipmentId, double cost) {
+        this.equipmentId = equipmentId;
+        this.cost = cost;
+    }
+
+    abstract void equipmentDetails();
+    abstract void purchaseEquipment();
+    abstract void repair();
+}
+//aiman
+class LabEquipment extends Equipment {
+    String equipmentName;
+    int equipmentCount;
+
+    public LabEquipment(String id, double cost, String name, int count) {
+        super(id, cost);
+        this.equipmentName = name;
+        this.equipmentCount = count;
+    }
+
+    @Override
+    void equipmentDetails() {
+        System.out.println("Lab Equipment: " + equipmentName + " | Count: " + equipmentCount + " | Cost: " + cost);
+    }
+
+    @Override
+    void purchaseEquipment() {
+        System.out.println("Purchased new lab equipment: " + equipmentName);
+    }
+
+    @Override
+    void repair() {
+        System.out.println("Repairing lab equipment: " + equipmentName);
+    }
+}
+//aiman
+class ClassEquipment extends Equipment {
+    int benchCount, fanCount, lightCount;
+
+    public ClassEquipment(String id, double cost, int benchCount, int fanCount, int lightCount) {
+        super(id, cost);
+        this.benchCount = benchCount;
+        this.fanCount = fanCount;
+        this.lightCount = lightCount;
+    }
+
+    @Override
+    void equipmentDetails() {
+        System.out.println("Class Equipment -> Benches: " + benchCount + ", Fans: " + fanCount + ", Lights: " + lightCount);
+    }
+
+    @Override
+    void purchaseEquipment() {
+        System.out.println("Purchased classroom equipment.");
+    }
+
+    @Override
+    void repair() {
+        System.out.println("Repairing classroom equipment.");
+    }
+}
+//aiman
+class Department {
+    String departmentId, departmentName, inchargeName;
+    List<Employee> members = new ArrayList<>();
+
+    public Department(String departmentId, String departmentName, String inchargeName) {
+        this.departmentId = departmentId;
+        this.departmentName = departmentName;
+        this.inchargeName = inchargeName;
+    }
+
+    public void addMember(Employee emp) { members.add(emp); }
+
+    public void departmentDetails() {
+        System.out.println("Department: " + departmentName + " | Incharge: " + inchargeName);
+        for (Employee e : members) System.out.println(" - " + e.name);
+    }
+}
+
+
